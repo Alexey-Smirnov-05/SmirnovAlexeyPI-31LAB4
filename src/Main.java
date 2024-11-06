@@ -23,12 +23,13 @@ public class Main {
             System.out.println("8. Выход");
             System.out.print("Действие: ");
             choice = scanner.nextInt();
+            scanner.nextLine(); // Очищаем буфер ввода
 
             switch (choice) {
                 case 0: {
                     Track song = new Track();
                     System.out.print("Введите название трека: ");
-                    String title = scanner.next();
+                    String title = scanner.nextLine(); // Используем nextLine для считывания строки
                     song.setTitle(title);
                     user.addSongToPlaylist(song);
                     playlist.saveTracksToFile("playlist.txt");
@@ -98,6 +99,7 @@ public class Main {
                     }
                     break;
                 case 8:
+                    scanner.close(); // Закрываем сканер перед выходом
                     return;
                 default:
                     System.out.println("Ошибка выбора действия");
